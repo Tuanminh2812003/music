@@ -1,0 +1,95 @@
+.songNhac{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    background-color: #efefef;
+    padding: 10px;
+    border-radius: 100px;
+    border: #151515 2px solid;
+    transition: all 0.5s ease-in;
+    flex-direction: column;
+
+    &__wave{
+        width: 90%;
+        cursor: pointer;
+        position: relative;
+    }
+
+    &__songInfor{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 5px;
+
+        &__title{
+            font-weight: 600;
+            margin: 0px 5px;
+        }
+    }
+
+    &__button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        position: relative;
+
+        &__play{
+            cursor: pointer;
+            border-radius: 100px;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            background-color: #151515;
+            color: white;
+            border: #151515 2px solid;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
+        &__play:hover{
+            background-color: white;
+            color: #151515;
+        }
+        &__backNext{
+            font-size: 25px;
+            cursor: pointer;
+        }
+        &__backNext:hover{
+            color: #8DECB4;
+        }
+        &__like{
+            position: absolute;
+            font-size: 25px;
+            right: 500px;
+            cursor: pointer;
+
+            &__yes{
+                display: none;
+            }
+        }
+        &__like:hover > .songNhac__button__like__not{
+            display: none;
+        }
+        &__like:hover > .songNhac__button__like__yes{
+            display: flex;
+        }
+    }
+}
+.songNhac__button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: all 0.5s ease-in;
+    opacity: 0;
+    height: 0px;
+}
+.songNhac:hover >.songNhac__button{
+    opacity: 1;
+    height: 40px;
+    margin-top: 10px;
+}

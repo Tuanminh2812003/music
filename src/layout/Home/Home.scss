@@ -1,0 +1,153 @@
+.album{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    &__title{
+        font-size: 30px;
+        font-weight: 500;
+    }
+
+    &__innerAlbum{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        justify-content: space-around;
+
+        &__nameAlbum{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 300px;
+            height: 300px;
+            box-shadow: 2px 2px 5px #656565;
+            margin: 5px;
+            border-radius: 12px;
+            color: white;
+            text-decoration: none;
+            padding: 50px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            transition: all ease-in 0.3s;
+
+            &__diathan{
+                width: 400px;
+                height: 400px;
+                position: absolute;
+                z-index: -2;
+                right: -48px;
+                transition: all ease-in 0.3s;
+                opacity: 0;
+            }
+
+            &__createdBy{
+                font-weight: 400;
+                font-size: 15px;
+            }
+            &__title{
+                font-size: 70px;
+                font-weight: 600;
+            }
+            &__like{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &__text{
+                    margin: 3px;
+                }
+            }
+        }
+        &__nameAlbum:hover{
+            text-shadow: 2px 2px 15px rgb(99, 3, 3);
+        }
+        &__nameAlbum:hover > .album__innerAlbum__nameAlbum__diathan{
+            right: -210px;
+            opacity: 1;
+            animation: spin 2s linear infinite; /* Thêm animation quay tròn */
+        }
+    }
+}
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.song{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 50px;
+
+    &__title{
+        font-size: 30px;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    &__nameSong{
+        cursor: pointer;
+        width: 100%;
+        display: flex;
+        font-size: 22px;
+        align-items: center;
+        justify-content: space-between;
+        padding: 15px;
+        // border: #151515 2px solid;
+        border-radius: 20px;
+        box-shadow: 2px 2px 5px #656565;
+        margin-bottom: 10px;
+        transition: all ease-in 0.2s;
+
+        &__picture{
+            height: 150px;
+            width: 150px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 15px;
+        }
+        &__name{
+            width: 70%;
+
+            &__title{
+                font-size: 22px;
+                font-weight: 500;
+            }
+
+            &__author{
+                font-size: 15px;
+            }
+        }
+        &__time{
+            font-size: 18px;
+        }
+        &__play{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #151515;
+            color: white;
+            padding: 10px;
+            border-radius: 100px;
+            font-size: 15px;
+            margin-right: 20px;
+        }
+    }
+    &__nameSong:hover{
+        box-shadow: 2px 2px 15px red;
+    }
+}

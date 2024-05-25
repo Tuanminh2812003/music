@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { SongProvider } from "./components/SongContext";
+import Home from './layout/Home';
+import LayoutDefault from "./layout/LayoutDefault";
+import AlbumDetail from "./layout/AlbumDetail";
+import TimKiem from "./layout/TimKiem";
+import User from "./layout/User";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SongProvider>
+      <Routes>
+        <Route path="/" element={<LayoutDefault />}>
+          <Route index element={<Home />} />
+          <Route path='album/:id' element={<AlbumDetail />} />
+          <Route path="/find" element={<TimKiem />} />
+          <Route path="/profile" element={<User />} />
+        </Route>
+      </Routes>
+    </SongProvider>
   );
 }
 
