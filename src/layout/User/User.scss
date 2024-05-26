@@ -153,6 +153,17 @@
                 border: #151515 2px solid;
             }
         }
+        &__restart{
+            font-size: 20px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        &__picture{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
     }
 }
 @keyframes slideIn {

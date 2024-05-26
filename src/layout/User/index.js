@@ -3,7 +3,9 @@ import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaPlay, FaPause, FaBackward, FaHeart } from "react-icons/fa";
 import { IoMdCloseCircleOutline } from "react-icons/io";
 import diaThan from "../../image/diathan.png";
+import { useNavigate } from "react-router-dom"
 import "./User.scss";
+import ask from "../../image/53b98beb85f225ac7ce3.png";
 
 function User(){
     const [dataUserDetail, setDataUserDetail] = useState(null); // Thay đổi từ [] thành null
@@ -15,6 +17,7 @@ function User(){
     const [showModalSucces, setShowModalSucces] = useState(false); // State để kiểm soát hiển thị modal
     const modalRef = useRef(null); // Ref cho modal
     const modalContentRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`https://music-web-orcin.vercel.app/api/v1/user/profile`, { credentials: 'include' })
@@ -312,17 +315,20 @@ function User(){
         }
     };
 
+    
     const handleLogout = async () => {
         try {
-            const response = await fetch(`https://music-web-orcin.vercel.app/api/v1/user/logout`, {
+            const response = await fetch('https://music-web-orcin.vercel.app/api/v1/user/logout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                credentials: 'include', // Thêm dòng này nếu server sử dụng cookie để xác thực
             });
     
             if (response.ok) {
-                console.log(response);
+                console.log('Logout successful:', response);
+                // Thực hiện các hành động cần thiết sau khi logout thành công, ví dụ như chuyển hướng hoặc cập nhật trạng thái
             } else {
                 const errorData = await response.json();
                 console.error("Logout failed:", errorData);
@@ -332,7 +338,10 @@ function User(){
             console.error("Error during logout:", error);
             alert("Có lỗi xảy ra khi logout");
         }
+        alert("You are logout");
+        navigate("/");
     };
+    
     
     return(
         <>
@@ -443,7 +452,8 @@ function User(){
                 <div className="user__modal" ref={modalRef}>
                     <div className='user__modal--buttonClose' onClick={() => setShowModalSucces(false)}><IoMdCloseCircleOutline /></div>
                     <div className="user__modal--content" ref={modalContentRef}>
-                        Album created successfully. Please reload the webpage.
+                        <div className="user__modal--content__restart">Album created successfully. Please reload the webpage.</div>
+                        <div className="user__modal--content__picture"><img src={ask}/></div>
                     </div>
                 </div>
             )}
