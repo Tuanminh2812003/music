@@ -36,6 +36,8 @@
             background-size: cover;
             position: relative;
             transition: all ease-in 0.3s;
+            margin: 20px 10px;
+            text-shadow: 2px 2px 35px rgb(0, 0, 0);
 
             &__diathan{
                 width: 400px;
@@ -52,8 +54,9 @@
                 font-size: 15px;
             }
             &__title{
-                font-size: 70px;
+                font-size: 45px;
                 font-weight: 600;
+                text-align: center;
             }
             &__like{
                 display: flex;

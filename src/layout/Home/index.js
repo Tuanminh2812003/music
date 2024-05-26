@@ -15,7 +15,8 @@ function Home() {
             .then(res => res.json())
             .then(data => {
                 if (data && data.data) {
-                    setData(data.data);
+                    const shuffledSongs = data.data.sort(() => Math.random() - 0.5);
+                    setData(shuffledSongs);
                 }
             });
     }, []);
@@ -24,9 +25,16 @@ function Home() {
         fetch(`https://music-web-orcin.vercel.app/api/v1/album`)
             .then(res => res.json())
             .then(data => {
-                if (data && data.data) {
-                    setDataAlbum(data.data);
+                // if (data && data.data) {
+                //     setDataAlbum(data.data);
+                // }
+                var ans = [];
+                for(let i=0; i< data.data.length; i++){
+                    if(data.data[i].status === "public"){
+                        ans.push(data.data[i])
+                    }
                 }
+                setDataAlbum(ans);
             });
     }, []);
 

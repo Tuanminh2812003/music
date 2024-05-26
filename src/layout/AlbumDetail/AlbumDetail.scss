@@ -1,0 +1,213 @@
+.albumDetail{
+    width: 100%;
+    height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 30px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 80px;
+
+    &--black{
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 0.5;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    &__detail{
+        color: white;
+        width: 70%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        &__createBy{
+            font-size: 18px;
+        }
+        &__title{
+            font-size: 100px;
+            font-weight: 700;
+            text-align: center;
+        }
+        &__likeShare{
+            display: flex;
+
+            &__like{
+                cursor: pointer;
+                margin: 5px;
+                font-size: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 20px;
+                margin: 0px 20px;
+                transition: all 0.2s ease-in;
+
+                &__text{
+                    margin: 5px;
+                }
+            }
+            &__like:hover{
+                font-size: 30px;
+            }
+        }
+        &__play{
+            width: 40%;
+            padding: 20px;
+            border-radius: 15px;
+            background-color: white;
+            color: #151515;
+            border-radius: #151515;
+            cursor: pointer;
+            margin-top: 30px;
+            background: linear-gradient(270deg, #b2ff9a, #fad0c4, #c4c4fa, #9af8ff); // Màu gradient pastel
+            background-size: 600% 600%;
+            animation: gradientAnimation 10s ease infinite; // Animation chạy màu liên tục
+            transition: transform 0.3s ease, box-shadow 0.3s ease; // Transition cho hover
+            font-size: 20px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 2px 2px 15px rgb(255, 0, 0);
+            border: none;
+        }
+        &__play:hover{
+            transform: scale(1.05); // Hiệu ứng nhấn mạnh khi hover
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); // Shadow khi hover
+        }
+    }
+    &__song{
+        position: relative;
+        color: white;
+        width: 30%;
+        height: 95%;
+        border: 1px rgb(130, 130, 130) solid;
+        border-radius: 20px;
+        padding: 30px;
+        position: relative;
+        overflow:auto;
+        background-color: rgba(255, 255, 255, 0.2); // Nền đen trong suốt
+
+        &__amount{
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        &__nameSong{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+
+            &__picture{
+                width: 60px;
+                height: 60px;
+                border-radius: 8px;
+                background-position: center;
+                background-size: cover;
+            }
+            &__name{
+                width: 50%;
+                text-wrap: wrap;
+
+                &__title{
+                    font-size: 15px;
+                    font-weight: 600;
+                }
+                &__author{
+                    font-size: 12px;
+                    font-weight: 300;
+                    margin-top: 5px;
+                    color: rgb(218, 218, 218);
+                }
+            }
+            &__time{
+                width: 15%;
+                font-size: 15px;
+                color: rgb(218, 218, 218);
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                margin-left: 15px;
+            }
+        }
+    }
+}
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+.backModal{
+    width: 100%;
+    height: 100%;
+    background-color:rgb(44, 44, 44);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 5000;
+    opacity: 0.5;
+}
+
+.modal{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+    background-color: white;
+    padding: 50px;
+    display: flex;
+    z-index: 9999;
+    animation: slideIn 0.5s ease-in-out forwards;
+    border-radius: 30px;
+
+    &--buttonClose{
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        font-size: 30px;
+        cursor: pointer;
+    }
+    &--buttonClose:hover{
+        color: rgb(205, 81, 81);
+    }
+    &--content{
+        &__alert{
+            margin-bottom: 10px;
+        }
+
+        &__link{
+            font-size: 25px;
+            font-weight: 500;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            background-color: #4ff898;
+            color: #151515;
+            border-radius: 100px;
+        }
+    }
+}
+@keyframes slideIn {
+    from {
+        top: -100%; /* Modal ẩn bên trên màn hình */
+        opacity: 0; /* Modal ban đầu không hiển thị */
+    }
+    to {
+        top: 50%; /* Hiển thị modal ở giữa màn hình */
+        opacity: 1; /* Hiển thị modal với opacity đầy đủ */
+    }
+}

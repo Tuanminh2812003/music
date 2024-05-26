@@ -3,6 +3,7 @@ import { SongContext } from '../../components/SongContext';
 import './TimKiem.scss';
 import { Link } from 'react-router-dom';
 import { FaPlay, FaPause, FaBackward } from "react-icons/fa";
+import { TbMusicSearch } from "react-icons/tb";
 
 function TimKiem() {
     const [data, setData] = useState([]);
@@ -48,23 +49,27 @@ function TimKiem() {
             <div className='timKiem'>
                 <form className='timKiem__form' onSubmit={handleSubmit}>
                     <input type='text' className='timKiem__form__input' placeholder="Song's name" />
-                    <button className='timKiem__form__button'>Find</button>
+                    <button className='timKiem__form__button'><TbMusicSearch /></button>
                 </form>
-                <div className='timKiem__results'>
-                    {searchResults.map((song, index) => (
-                        <div className='song__nameSong' onClick={() => handleSongClick(song)} key={song._id}>
-                            <div className='song__nameSong__picture' style={{backgroundImage: `url(${song.coverImageUrl})`}}></div>
-                            <div className='song__nameSong__name'>
-                                <div className='song__nameSong__name__title'>{song.title}</div>
-                                <div className='song__nameSong__name__author'>{song.artist}</div>
+                {searchResults ? (
+                    <div className='timKiem__results'>
+                        {searchResults.map((song, index) => (
+                            <div className='song__nameSong' onClick={() => handleSongClick(song)} key={song._id}>
+                                <div className='song__nameSong__picture' style={{backgroundImage: `url(${song.coverImageUrl})`}}></div>
+                                <div className='song__nameSong__name'>
+                                    <div className='song__nameSong__name__title'>{song.title}</div>
+                                    <div className='song__nameSong__name__author'>{song.artist}</div>
+                                </div>
+                                <div className='song__nameSong__time'>
+                                    {formatDuration(song.duration)} {/* Sử dụng hàm formatDuration để hiển thị thời lượng */}
+                                </div>
+                                <div className='song__nameSong__play'><FaPlay /></div>
                             </div>
-                            <div className='song__nameSong__time'>
-                                {formatDuration(song.duration)} {/* Sử dụng hàm formatDuration để hiển thị thời lượng */}
-                            </div>
-                            <div className='song__nameSong__play'><FaPlay /></div>
-                        </div>
-                    ))}
-                </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className=''>Find your Song!</div>
+                )}
             </div>
         </>
     );

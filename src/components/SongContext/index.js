@@ -15,7 +15,8 @@ export const SongProvider = ({ children }) => {
             .then(res => res.json())
             .then(data => {
                 if (data && data.data) {
-                    setAllSongs(data.data);
+                    const shuffledSongs = data.data.sort(() => Math.random() - 0.5);
+                    setAllSongs(shuffledSongs);
                 }
             });
     }, []);
